@@ -22,7 +22,7 @@ public class ImgProcessor {
 	 *
 	 * @throws Exception
 	 */
-	private static void splitImage() throws Exception {
+	public static void splitImage() throws Exception {
 		String originalImg = "C:\\Users\\liwj\\Desktop\\tidb\\image\\ori.jpg";
 		File file = new File(originalImg);
 		FileInputStream fis = new FileInputStream(file);
@@ -57,17 +57,17 @@ public class ImgProcessor {
 	 *
 	 * @throws Exception
 	 */
-	private static void mergeImage(String inputPath, String inputFileName, String outputPath, String outputFileName, int rows, int cols, int chunkWidth, int chunkHeight, String fileType) throws Exception {
+	public static void mergeImage(String inputPath, String outputPath, int rows, int cols, String outputFileType) throws Exception {
 //		int rows = 2;
 //		int cols = 2;
 		int chunks = rows * cols;
 //
-//		int chunkWidth, chunkHeight;
+		int chunkWidth, chunkHeight;
 		int type;
 
 		File[] imgFiles = new File[chunks];
 		for (int i = 0; i < chunks; i++) {
-			imgFiles[i] = new File(inputPath + inputFileName + "." + fileType);
+			imgFiles[i] = new File(inputPath);
 		}
 
 		BufferedImage[] buffImages = new BufferedImage[chunks];
@@ -88,7 +88,7 @@ public class ImgProcessor {
 			}
 		}
 
-		ImageIO.write(finalImg, fileType, new File(outputPath + outputFileName + "." + fileType));
+		ImageIO.write(finalImg, outputFileType, new File(outputPath));
 	}
 
 	/**
@@ -189,25 +189,4 @@ public class ImgProcessor {
 		bufImage.setRGB(0, 0, width, height, rgbs, 0, width);
 		ImageIO.write(bufImage, "JPEG", new File("/Users/sunxianyan/Downloads/镜像.jpg"));
 	}
-
-	/*    *//**
-			 * 拼接
-			 *//*
-				 * public static void add() throws Exception { String fileUrl =
-				 * "https://static.cdn.longmaosoft.com/00039447dd4fa068e1835148c3d5431e.png";
-				 * String filepath = "/Users/sunxianyan/Downloads/223233fmbmgbxrmfwmi3mw.jpg";
-				 * 
-				 * BufferedImage bufImage = ImageIO.read(new URL(fileUrl)); BufferedImage
-				 * addImage = ImageIO.read(new File(filepath));
-				 * 
-				 * Graphics2D g2d = (Graphics2D) bufImage.getGraphics().create();
-				 * 
-				 * // 绘制图片（如果宽高传的不是图片原本的宽高, 则图片将会适当缩放绘制） g2d.drawImage(addImage, 50, 50,
-				 * addImage.getWidth(), addImage.getHeight(),null);
-				 * 
-				 * g2d.dispose();
-				 * 
-				 * ImageIO.write(bufImage,"jpeg", new
-				 * File("/Users/sunxianyan/Downloads/拼接.jpg")); }
-				 */
 }

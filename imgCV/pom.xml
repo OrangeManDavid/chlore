@@ -63,7 +63,19 @@
 	    <groupId>org.bytedeco</groupId>
 	    <artifactId>javacv-platform</artifactId>
 	    <version>1.5.2</version>
-	  </dependency>
+	  </dependency>      
+	<dependency>
+		<groupId>org.json</groupId>
+		<artifactId>json</artifactId>
+		<version>20190722</version>
+	</dependency>
+	<!--
+	<dependency>
+	    <groupId>android.support</groupId>
+	    <artifactId>compatibility-v13</artifactId>
+	    <version>19.0.1</version>
+	</dependency> -->
+	
   </dependencies>
 	<build>   
 	  <plugins>
