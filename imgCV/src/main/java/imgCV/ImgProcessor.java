@@ -57,17 +57,17 @@ public class ImgProcessor {
 	 *
 	 * @throws Exception
 	 */
-	private static void mergeImage() throws Exception {
-		int rows = 2;
-		int cols = 2;
+	private static void mergeImage(String inputPath, String inputFileName, String outputPath, String outputFileName, int rows, int cols, int chunkWidth, int chunkHeight, String fileType) throws Exception {
+//		int rows = 2;
+//		int cols = 2;
 		int chunks = rows * cols;
-
-		int chunkWidth, chunkHeight;
+//
+//		int chunkWidth, chunkHeight;
 		int type;
 
 		File[] imgFiles = new File[chunks];
 		for (int i = 0; i < chunks; i++) {
-			imgFiles[i] = new File("C:\\Users\\liwj\\Desktop\\tidb\\image\\" + i + ".jpg");
+			imgFiles[i] = new File(inputPath + inputFileName + "." + fileType);
 		}
 
 		BufferedImage[] buffImages = new BufferedImage[chunks];
@@ -88,17 +88,8 @@ public class ImgProcessor {
 			}
 		}
 
-		ImageIO.write(finalImg, "jpeg", new File("C:\\Users\\liwj\\Desktop\\tidb\\image\\finalImg.jpg"));
+		ImageIO.write(finalImg, fileType, new File(outputPath + outputFileName + "." + fileType));
 	}
-
-//    public static void main(String[] args) {
-//        try {
-//            splitImage();
-//            mergeImage();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 	/**
 	 * 缩放
