@@ -1,12 +1,16 @@
 package imgCV;
 
 import java.io.File;
-import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
+
+import entity.Grade;
 import entity.ImgFileEntity;
+import entity.Student;
+import utils.FastJsonuUils;
 
 public class App {
 	private static final Logger logger = LoggerFactory.getLogger(App.class);
@@ -20,30 +24,31 @@ public class App {
 //    	System.out.println(args[0]);
 //    	System.out.println("参数2: ");
 //    	System.out.println(args[1]);
-		logger.info("hello this is log4j info log");
-		logger.info("hello this is log4j info log1");
-		logger.info("hello this is log4j info log2");
-		logger.info("hello this is log4j info log3");
-		logger.debug("Hello debug log");
-		logger.warn("Hello warnning log");
-		logger.error("Hello Error Log");
-
-		Scanner sc = new Scanner(System.in);
-		System.out.println("请输入需要转换的pdf的地址");
-		String fileAddress = sc.nextLine();
-		System.out.println("请输入需要转换的pdf的名称，不要加.pdf后缀，例如 操作系统概念：");
-		String filename = sc.nextLine();
-		System.out.println("请输入开始转换的页码，从0开始，例如 5：");
-		int indexOfStart = sc.nextInt();
-		System.out.println("请输入停止转换的页码，-1为全部，例如 10：");
-		int indexOfEnd = sc.nextInt();
-		if (indexOfEnd == -1) {
-			Pdf2Img.pdf2png(fileAddress, filename);
-		} else {
-			Pdf2Img.pdf2png(fileAddress, filename, indexOfStart, indexOfEnd);
-		}
+//		logger.info("hello this is log4j info log");
+//		logger.info("hello this is log4j info log1");
+//		logger.info("hello this is log4j info log2");
+//		logger.info("hello this is log4j info log3");
+//		logger.debug("Hello debug log");
+//		logger.warn("Hello warnning log");
+//		logger.error("Hello Error Log");
+//
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("请输入需要转换的pdf的地址");
+//		String fileAddress = sc.nextLine();
+//		System.out.println("请输入需要转换的pdf的名称，不要加.pdf后缀，例如 操作系统概念：");
+//		String filename = sc.nextLine();
+//		System.out.println("请输入开始转换的页码，从0开始，例如 5：");
+//		int indexOfStart = sc.nextInt();
+//		System.out.println("请输入停止转换的页码，-1为全部，例如 10：");
+//		int indexOfEnd = sc.nextInt();
+//		if (indexOfEnd == -1) {
+//			Pdf2Img.pdf2png(fileAddress, filename);
+//		} else {
+//			Pdf2Img.pdf2png(fileAddress, filename, indexOfStart, indexOfEnd);
+//		}
+//		System.out.println("OK");
+		testFastJson();
 		System.out.println("OK");
-
 	}
 
 	public static void jointImg() {
@@ -85,4 +90,40 @@ public class App {
 			System.out.println(file2);
 		}
 	}
+
+	public static void testFastJson() {
+//		String filePath = "C:\\workspace\\Java\\chlore\\imgCV\\src\\main\\resources\\Student.json";
+//		String jsonContent = FastJsonuUils.ReadFile(filePath);
+//		List<Student> list = JSON.parseArray(jsonContent, Student.class);
+////		Map<String, Integer> map = new HashMap<String, Integer>();
+//
+//		Student vo = JSON.parseObject(jsonContent, Student.class);
+		Grade group = new Grade();
+		group.setId(0L);
+		group.setName("admin");
+
+		Student student = new Student();
+		student.setId(2L);
+		student.setName("guest");
+
+		Student rootUser = new Student();
+		rootUser.setId(3L);
+		rootUser.setName("root");
+
+		group.addStudent(student);
+		group.addStudent(rootUser);
+
+		// 转换为 JSON
+		String jsonString = JSON.toJSONString(group);
+		System.out.println("JSON字符串：" + jsonString);
+
+		// 转换为 对象BEAN
+
+		String filePath = "C:\\workspace\\Java\\chlore\\imgCV\\src\\main\\resources\\Student.json";
+		String jsonContent = FastJsonuUils.ReadFile(filePath);
+		Grade grade = JSON.parseObject(jsonContent, Grade.class);
+//		Grade grade = JSON.parseObject(jsonString, Grade.class);
+		System.out.println("JavaBean对象：" + grade);
+	}
+
 }
