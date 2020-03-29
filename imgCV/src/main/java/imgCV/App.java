@@ -36,10 +36,10 @@ public class App
 		System.out.println("请输入停止转换的页码，-1为全部，例如 10：");
 		int indexOfEnd=sc.nextInt();
 		if (indexOfEnd==-1) {
-			PDF2img.pdf2png(fileAddress, filename);
+			Pdf2Img.pdf2png(fileAddress, filename);
 		}
 		else {
-			PDF2img.pdf2png(fileAddress, filename, indexOfStart, indexOfEnd);
+			Pdf2Img.pdf2png(fileAddress, filename, indexOfStart, indexOfEnd);
 		}
         System.out.println( "OK" );
     }

@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
-public class PDF2img {
+public class Pdf2Img {
 	
 	//可自由确定起始页和终止页
 	public static void pdf2png(String fileAddress,String filename,int indexOfStart,int indexOfEnd) {
