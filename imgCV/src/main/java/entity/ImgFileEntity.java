@@ -1,4 +1,4 @@
-package imgCV;
+package entity;
 
 public class ImgFileEntity {
 	private String inputFilePath;

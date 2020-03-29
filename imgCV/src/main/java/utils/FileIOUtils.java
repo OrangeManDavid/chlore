@@ -1,4 +1,4 @@
-package imgCV;
+package utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

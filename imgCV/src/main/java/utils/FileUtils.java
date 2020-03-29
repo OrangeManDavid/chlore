@@ -1,4 +1,4 @@
-package imgCV;
+package utils;
 
 //import android.content.ContentResolver;
 //import android.content.Intent;

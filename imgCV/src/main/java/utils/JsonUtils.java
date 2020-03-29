@@ -1,4 +1,4 @@
-package imgCV;
+package utils;
 
 //import android.util.Log;
 
@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class JsonUtils {
-	private static final Logger logger = LoggerFactory.getLogger(App.class);
+	private static final Logger logger = LoggerFactory.getLogger(JsonUtils.class);
 	private static final byte TYPE_BOOLEAN = 0x00;
 	private static final byte TYPE_INT = 0x01;
 	private static final byte TYPE_LONG = 0x02;
